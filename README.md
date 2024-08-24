@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+https://ui.shadcn.com/docs
+https://zod.dev/
+https://tailwindcss.com/docs
+https://tanstack.com/query/latest/docs
+https://lucide.dev/
+https://react-hook-form.com/docs
+
 ## Getting Started
 
 First, run the development server:

@@ -4,13 +4,13 @@ import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 import { Button } from '@/components/ui/button'
 
-export type Ticket = {
+export type ITicket = {
     id: number
     title: string
     public: boolean
 }
 
-export const columns: ColumnDef<Ticket>[] = [
+export const columns: ColumnDef<ITicket>[] = [
     {
         accessorKey: "id",
         header: ({ column }) => {

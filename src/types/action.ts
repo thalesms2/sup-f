@@ -1,9 +1,7 @@
 import IUser from "@/types/user"
+import GenericType from "./genericType"
 
-export default interface IAction {
-    id: number
-    createdAt: Date
-    updatedAt: Date
+export default interface IAction extends GenericType {
     ticketId: number
     description: string
     clientUserId: number

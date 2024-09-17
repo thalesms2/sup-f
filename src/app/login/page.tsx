@@ -1,5 +1,6 @@
 "use client"
 
+import { redirect } from 'next/navigation'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator"
@@ -23,6 +24,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { getQueryClient } from "@/hooks/get-query-client";
+import { navigate } from './actions'
 
 const formSchema = z.object({
     username: z.string().min(5, { message: 'O usuário deve possuir mais de 5 caracteres' }).max(100, { message: 'O usuário não pode conter mais de 100 caracteres' }),
@@ -51,7 +53,7 @@ export default function Login() {
         })
         let data:{token: string} = await response.json()
         setCookie('token', data.token)
-        return data
+        navigate()
     }
     
     return (
@@ -90,7 +92,7 @@ export default function Login() {
                             />
                         </CardContent>
                         <CardFooter className="justify-end">
-                            <Button type="submit">Entrar</Button>
+                            <Button type="submit">Entrar</Button>   
                         </CardFooter>
                     </form>
                 </Form>

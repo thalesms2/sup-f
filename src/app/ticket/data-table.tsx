@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
     ColumnDef,
@@ -63,15 +64,22 @@ export function DataTable<TData, TValue>({
     return (
         <div>
             <div className="flex items-center">
-                <div className="flex items-center py-4">
-                    <Input
-                        placeholder="Filtrar por título..."
-                        value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) =>
-                            table.getColumn("title")?.setFilterValue(event.target.value)
-                        }
-                        className="max-w-sm"
-                    />
+                <div className="flex flex-row items-center space-x-3">
+                    <Link href="/ticket/create" id="createTicket">
+                        <Button variant="default" className="ml-auto">
+                            Criar novo ticket
+                        </Button>
+                    </Link>
+                    <div className="flex items-center py-4">
+                        <Input
+                            placeholder="Filtrar por título..."
+                            value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+                            onChange={(event) =>
+                                table.getColumn("title")?.setFilterValue(event.target.value)
+                            }
+                            className="max-w-sm"
+                        />
+                    </div>
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>

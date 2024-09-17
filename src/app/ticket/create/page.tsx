@@ -45,7 +45,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { cn } from "@/lib/utils"
-import { getCookie, setCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next'
 
 const formSchema = z.object({
     title: z.string().min(5, { message: 'O título deve possuir mais de 5 caracteres' }).max(100, { message: 'O título não pode conter mais de 100 caracteres' }),
@@ -85,7 +85,7 @@ const frameworks = [
 export default function TicketCreate() {
     const [openUser, setOpenUser] = React.useState(false)
     const [openCompany, setOpenCompany] = React.useState(false)
-    const [numActions, setNumActions] = React.useState(0)
+    const [numActions, setNumActions] = React.useState(1)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -118,9 +118,32 @@ export default function TicketCreate() {
         return data
     }
 
+    function showActions() {
+        let actions: Array<{ description: string, clientUserId: string }> = form.getValues('actions')
+        actions = actions.filter((action) => action.description)
+        return(
+            <div className="space-y-3">
+                {actions.map((action, index) => {
+                    return(
+                        <Card key={index}>
+                            <CardHeader>
+                                <CardTitle>Ação {index + 1}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                {action.description}
+                            </CardContent>
+                        </Card>
+                    )
+                })}
+            </div>
+        )
+    }
+
     async function addAction() {
         setNumActions(numActions + 1)
-        form.setValue(`actions.${numActions+1}.description`, '')
+        form.setValue(`actions.${numActions-1}.description`, form.getValues(`actions.${numActions}.description`))
+        form.setValue(`actions.${numActions-1}.clientUserId`, form.getValues(`actions.${numActions}.clientUserId`))
+        form.setValue(`actions.${numActions}.description`, '')
     }
 
     return(
@@ -291,8 +314,8 @@ export default function TicketCreate() {
                                                                 >
                                                                     <Check
                                                                         className={cn(
-                                                                        "mr-2 h-4 w-4",
-                                                                        field.value === item.value ? "opacity-100" : "opacity-0"
+                                                                            "mr-2 h-4 w-4",
+                                                                            field.value === item.value ? "opacity-100" : "opacity-0"
                                                                         )}
                                                                     />
                                                                     {item.label}
@@ -325,8 +348,10 @@ export default function TicketCreate() {
                         </div>
                         <Separator />
                         <div className="self-end">
-                            <Button type="submit">Salvar</Button>
+                            <Button type="submit">Salvar ticket</Button>
                         </div>
+                        <Separator />
+                        {showActions()}
                     </div>
                 </form>
             </Form>

@@ -51,8 +51,9 @@ export default function Login() {
                 password: values.password
             })
         })
-        let data:{token: string} = await response.json()
+        let data: { token: string, id: number } = await response.json()
         setCookie('token', data.token)
+        setCookie('user', data.id)
         navigate()
     }
     

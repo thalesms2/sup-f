@@ -114,7 +114,6 @@ export default function TicketCreate() {
             })
         })
         let data:{token: string} = await response.json()
-        console.log(values)
         return data
     }
 

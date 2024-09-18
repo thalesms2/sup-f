@@ -11,6 +11,7 @@ export default function Nav() {
 
     function logout() {
         setCookie('token', '')
+        setCookie('user', '')
     }
 
     const changeColor = (route: string) => {

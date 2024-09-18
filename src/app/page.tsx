@@ -1,72 +1,141 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { toast } from "sonner"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-
-
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function Home() {
-  
+  function reqAcess() {
+    toast("Não implementado ainda, só realizar o cadastro utilizando uma empresa")
+  }
   return (
-    <div>
-      Hello World
-      <Button>Click me</Button>
-      <Select>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Theme" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">Dark</SelectItem>
-          <SelectItem value="system">System</SelectItem>
-        </SelectContent>
-      </Select>
-      <Input />
-      <Label htmlFor="email">Your email address</Label>
-
-      
-      <Dialog>
-        <DialogTrigger>Open</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
-            <DialogDescription>
-              This action cannot be undone. This will permanently delete your account
-              and remove your data from our servers.
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
-      <RadioGroup defaultValue="option-one">
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-one" id="option-one" />
-          <Label htmlFor="option-one">Option One</Label>
+    <div className="flex relative flex-col bg-background">
+      <main className="flex-1">
+        <div className="container relative">
+          <section className="mx-auto flex flex-col items-start gap-2 px-4 py-8 md:py-12 md:pb-8 lg:py-12 lg:pb-10">
+            <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
+              Support Facility
+            </h1>
+            <p className="max-w-2xl text-lg font-light text-foreground">
+              O software de atendimento ao cliente que aumenta a produtividade e facilita a vida de ambos os técnicos quanto os clientes.
+            </p>
+            <div className="flex w-full items-center justify-start gap-2 py-2">
+              <Button variant="default" onClick={reqAcess}>Solicitar acesso</Button>
+              <Link href="https://github.com/thalesms2" passHref={true} target="_blank">
+                <Button variant="ghost">Github</Button>
+              </Link>
+            </div>
+          </section>
+          <section className="flex justify-center">
+            <Tabs defaultValue="organize" className="w-[100%] flex flex-col items-center">
+              <TabsList className="flex flex-row justify-around w-[70%]">
+                <TabsTrigger value="organize">Organização do atendimento</TabsTrigger>
+                <TabsTrigger value="produtivity">Mais produtividade</TabsTrigger>
+                <TabsTrigger value="management">Gestão simples</TabsTrigger>
+                <TabsTrigger value="fast">Rápido</TabsTrigger>
+              </TabsList>
+              <TabsContent value="organize">
+                organização
+              </TabsContent>
+              <TabsContent value="produtivity">
+                Feito para técnicos e simples para os clientes
+              </TabsContent>
+              <TabsContent value="management">
+                Gestão simplificada
+              </TabsContent>
+              <TabsContent value="fast">
+                Rápido e efetivo
+              </TabsContent>
+            </Tabs>
+          </section>
+          <section className="flex justify-center gap-x-5">
+            <Card>
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card Content</p>
+              </CardContent>
+              <CardFooter>
+                <p>Card Footer</p>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card Content</p>
+              </CardContent>
+              <CardFooter>
+                <p>Card Footer</p>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card Content</p>
+              </CardContent>
+              <CardFooter>
+                <p>Card Footer</p>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card Content</p>
+              </CardContent>
+              <CardFooter>
+                <p>Card Footer</p>
+              </CardFooter>
+            </Card>
+          </section>
+          <section>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It adheres to the WAI-ARIA design pattern.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It adheres to the WAI-ARIA design pattern.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It adheres to the WAI-ARIA design pattern.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </section>
         </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-two" id="option-two" />
-          <Label htmlFor="option-two">Option Two</Label>
-        </div>
-      </RadioGroup>
-
-
+      </main>
     </div>
   )
 }

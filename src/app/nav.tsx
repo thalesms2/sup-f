@@ -26,7 +26,7 @@ export default function Nav() {
             return(
                 <nav className="flex flex-row items-center justify-between w-screen mx-10">
                     <div className="flex items-center gap-4 text-sm lg:gap-6">
-                        <Link href="/dashboard" id="dashboard" className={changeColor("/")}>
+                        <Link href="/dashboard" id="dashboard" className={changeColor("/dashboard")}>
                             Dashboard
                         </Link>
                         <Link href="/ticket" id="ticket" className={changeColor("/ticket")}>

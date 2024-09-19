@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
-import Nav from './nav'
-import Providers from "./providers";
+import Nav from '../components/nav'
+import Providers from "../components/providers";
 import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <div className="h-screen">
           <ThemeProvider

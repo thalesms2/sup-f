@@ -1,10 +1,7 @@
 "use client"
 
-import { redirect } from 'next/navigation'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator"
-import { getCookie, setCookie } from 'cookies-next'
 import {
     Form,
     FormControl,
@@ -23,8 +20,8 @@ import {
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { getQueryClient } from "@/hooks/get-query-client";
-import { navigate } from './actions'
+import navigate from '@/hooks/navigate'
+import { saveCookie } from '@/hooks/use-cookies'
 
 const formSchema = z.object({
     username: z.string().min(5, { message: 'O usuário deve possuir mais de 5 caracteres' }).max(100, { message: 'O usuário não pode conter mais de 100 caracteres' }),
@@ -52,9 +49,9 @@ export default function Login() {
             })
         })
         let data: { token: string, id: number } = await response.json()
-        setCookie('token', data.token)
-        setCookie('user', data.id)
-        navigate()
+        saveCookie('token', data.token)
+        saveCookie('user', data.id.toString())
+        navigate('/ticket')
     }
     
     return (

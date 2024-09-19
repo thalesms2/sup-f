@@ -1,15 +1,25 @@
 import IAction from '@/types/action'
 import IUser from '@/types/user'
 
-export default interface ITicket {
+interface Action {
+    id: number
+    description: string
+}
+
+interface ITicket {
     id: number
     createdAt: Date
     updatedAt: Date
     title: string
     description: string
-    actions: Array<IAction>
+    actions: Array<Action>
     userCreatorId: number
-    userCreator: IUser
     companyId: number
+    status: string
+    priority: number
     public: boolean
+}
+
+export type {
+    ITicket
 }

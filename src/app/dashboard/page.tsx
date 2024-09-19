@@ -1,6 +1,3 @@
-import { Metadata } from "next"
-import Image from "next/image"
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -15,18 +12,9 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { CalendarDateRangePicker } from "./date-range-picker"
-import { MainNav } from "./main-nav"
-import { Overview } from "./overview"
-import { RecentSales } from "./recent-sales"
-import { Search } from "./search"
-import TeamSwitcher from "./team-switcher"
-import { UserNav } from "./user-nav"
-
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Example dashboard app built using the components.",
-}
+import { CalendarDateRangePicker } from "@/components/dashboard/date-range-picker"
+import { Overview } from "@/components/dashboard/overview"
+import { RecentSales } from "@/components/dashboard/recent-sales"
 
 export default function Dashboard() {
   return (
@@ -42,7 +30,9 @@ export default function Dashboard() {
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="overview">
+                Overview
+              </TabsTrigger>
               <TabsTrigger value="analytics" disabled>
                 Analytics
               </TabsTrigger>

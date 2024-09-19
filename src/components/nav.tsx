@@ -3,17 +3,18 @@
 import * as React from "react"
 import { usePathname } from 'next/navigation'
 import Link from "next/link"
-import { setCookie, getCookie,  } from 'cookies-next'
+import { deleteCookie, hasCookie } from 'cookies-next'
 
 export default function Nav() {
     const pathname = usePathname()
-    const token = getCookie('token')
+    const token = hasCookie('token')
 
+    // TODO fix token, when refresh the page gives an error
+    
     function logout() {
-        setCookie('token', '')
-        setCookie('user', '')
+        deleteCookie('token')
+        deleteCookie('user')
     }
-
     const changeColor = (route: string) => {
         if(route == pathname) {
             return "transition-colors hover:text-foreground/80 text-foreground"

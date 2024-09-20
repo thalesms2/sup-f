@@ -41,10 +41,10 @@ export default function Nav() {
                         </Link>
                     </div>
                     <div className="flex items-center gap-4 text-sm lg:gap-6">
-                        <Link href="/profile" id="signup" className={changeColor("/signup")}>
-                            Perfil
+                        <Link href="/settings" id="settings" className={changeColor("/settings")}>
+                            Configurações
                         </Link>
-                        <Link href="/login" id="login" onClick={logout} className={changeColor("/login")}>
+                        <Link href="/login" id="logout" onClick={logout} className={changeColor("/login")}>
                             Sair
                         </Link>
                     </div>

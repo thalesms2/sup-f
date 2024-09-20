@@ -4,14 +4,10 @@ import { z } from "zod"
 // IRL, you will have a schema for your data models.
 export const taskSchema = z.object({
   id: z.number(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
   title: z.string(),
   description: z.string(),
-  actions: z.array(z.object({
-    id: z.number(),
-    description: z.string()
-  })),
   userCreatorId: z.number(),
   companyId:  z.number(),
   status: z.string(),

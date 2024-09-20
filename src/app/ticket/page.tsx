@@ -2,45 +2,6 @@ import { columns } from "@/components/ticket/columns"
 import { DataTable } from "@/components/ticket/data-table"
 import { cookies } from 'next/headers'
 
-const dataTicket = [
-    {
-        id: 0,
-        createdAt: new Date(Date.now()),
-        updatedAt: new Date(Date.now()),
-        title: "ticket 1",
-        description: "descricao",
-        actions: [
-            {
-                id: 0,
-                description: "action 1"
-            }
-        ],
-        userCreatorId: 3,
-        companyId: 1,
-        status: "done",
-        priority: 0,
-        public: true
-    },
-    {
-        id: 1,
-        createdAt: new Date(Date.now()),
-        updatedAt: new Date(Date.now()),
-        title: "ticket 2",
-        description: "descricao 1",
-        actions: [            
-            {
-                id: 0,
-                description: "action 1"
-            }
-        ],
-        userCreatorId: 3,
-        companyId: 1,
-        status: "progress",
-        priority: 2,
-        public: true
-    }
-]
-
 export default async function Ticket() {
     const cookieStore = cookies()
     const token = cookieStore.get('token') || {value: ''}
@@ -61,7 +22,7 @@ export default async function Ticket() {
                         <h2 className="text-3xl font-bold tracking-tight">Tickets</h2>
                     </div>
                 </div>
-                <DataTable data={dataTicket} columns={columns} />
+                <DataTable data={data} columns={columns} />
             </div>
         </>
     )

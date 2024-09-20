@@ -21,7 +21,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import navigate from '@/hooks/navigate'
-import { saveCookie } from '@/hooks/use-cookies'
+import { setCookie } from 'cookies-next'
 
 const formSchema = z.object({
     username: z.string().min(5, { message: 'O usuário deve possuir mais de 5 caracteres' }).max(100, { message: 'O usuário não pode conter mais de 100 caracteres' }),
@@ -49,8 +49,8 @@ export default function Login() {
             })
         })
         let data: { token: string, id: number } = await response.json()
-        saveCookie('token', data.token)
-        saveCookie('user', data.id.toString())
+        setCookie('token', data.token)
+        setCookie('user', data.id.toString())
         navigate('/ticket')
     }
     

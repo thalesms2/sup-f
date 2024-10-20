@@ -36,7 +36,7 @@ export const columns: ColumnDef<ITicket>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" className="w-[50px]" />
+      <DataTableColumnHeader column={column} title="Status" className="" />
     ),
     cell: ({ row }) => {
       const status = statuses.find(
@@ -48,7 +48,7 @@ export const columns: ColumnDef<ITicket>[] = [
       }
 
       return (
-        <div className="flex w-[100px] items-center">
+        <div className="flex items-center">
           {status.icon && (
             <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
           )}

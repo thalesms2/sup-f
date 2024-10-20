@@ -30,7 +30,7 @@ export default function RootLayout({
           >
             <Providers>
               <Nav />
-              <div className="h-[93%]">
+              <div className="h-[95%]">
                 {children}
               </div>
               <Toaster />

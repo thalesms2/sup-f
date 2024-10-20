@@ -72,7 +72,7 @@ export default function Nav() {
     }
 
     return (
-        <div className="container flex h-[7%] max-w-screen-2xl">
+        <div className="container flex h-[5%] max-w-screen-2xl">
             {isLogged()}
         </div>
     )

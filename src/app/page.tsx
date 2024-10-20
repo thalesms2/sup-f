@@ -30,7 +30,9 @@ export default function Home() {
           Support Facility
         </h1>
         <p className="max-w-2xl text-lg font-light text-foreground">
-          O software de atendimento ao cliente que aumenta a produtividade e facilita a vida de ambos os técnicos quanto os clientes.
+          O software de atendimento ao cliente que aumenta a produtividade e facilita 
+          a vida de ambos os técnicos quanto os clientes.
+          Projeto feito para criar agilidade no atendimento de software houses.
         </p>
         <div className="flex w-full items-center justify-start gap-2 py-2">
           <Button variant="default" onClick={reqAcess}>Solicitar acesso</Button>
@@ -39,7 +41,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <section className="flex justify-center">
+      <section className="flex justify-center mb-4">
         <Tabs defaultValue="organize" className="w-[100%] flex flex-col items-center">
           <TabsList className="flex flex-row justify-around w-[70%]">
             <TabsTrigger value="organize">Organização do atendimento</TabsTrigger>
@@ -48,16 +50,17 @@ export default function Home() {
             <TabsTrigger value="fast">Rápido</TabsTrigger>
           </TabsList>
           <TabsContent value="organize">
-            organização
+            Fácil acesso para clientes e técnicos, criado pensando na usabilidade de todos
+            que irão utilizá-lo
           </TabsContent>
           <TabsContent value="produtivity">
             Feito para técnicos e simples para os clientes
           </TabsContent>
           <TabsContent value="management">
-            Gestão simplificada
+            Acesso fácil a dados e relatórios para controle dos atendimentos, problemas em andamento e gestão de técnicos
           </TabsContent>
           <TabsContent value="fast">
-            Rápido e efetivo
+            Tempo é uma das métricas que mais impacta a satisfação dos clientes com problemas.
           </TabsContent>
         </Tabs>
       </section>

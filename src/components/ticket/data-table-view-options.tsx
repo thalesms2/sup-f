@@ -20,6 +20,24 @@ interface DataTableViewOptionsProps<TData> {
 export function DataTableViewOptions<TData>({
   table,
 }: DataTableViewOptionsProps<TData>) {
+  
+  function fixColumn(id: string) {
+    switch(id) {
+      case "id":
+        return "Ticket"
+        break
+      case "title":
+        return "Título"
+        break
+      case "status":
+        return "Status"
+        break
+      case "priority":
+        return "Prioridade"
+        break
+    }
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -49,7 +67,7 @@ export function DataTableViewOptions<TData>({
                 checked={column.getIsVisible()}
                 onCheckedChange={(value) => column.toggleVisibility(!!value)}
               >
-                {column.id}
+                {fixColumn(column.id)}
               </DropdownMenuCheckboxItem>
             )
           })}

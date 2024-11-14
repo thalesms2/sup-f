@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
-import Nav from '../components/nav'
-import Providers from "../components/providers";
-import { Toaster } from "@/components/ui/sonner"
+import Nav from "./nav";
+import { Toaster } from "@/components/ui/sonner";
+import { logout, validateSession } from "@/lib/authService";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,17 +28,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Providers>
-              <Nav />
-              <div className="h-[95%]">
-                {children}
-              </div>
-              <Toaster />
-            </Providers>
+            <Nav logoutAction={logout} validateSession={validateSession} />
+            <div className="h-[95%]">{children}</div>
+            <Toaster />
           </ThemeProvider>
         </div>
       </body>
     </html>
   );
 }
-

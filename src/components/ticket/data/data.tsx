@@ -5,8 +5,8 @@ import {
   CheckCircledIcon,
   CrossCircledIcon,
   StopwatchIcon,
-} from "@radix-ui/react-icons"
-  
+} from "@radix-ui/react-icons";
+
 export const statuses = [
   {
     value: "progress",
@@ -23,7 +23,7 @@ export const statuses = [
     label: "Cancelado",
     icon: CrossCircledIcon,
   },
-]
+];
 
 export const priorities = [
   {
@@ -41,4 +41,4 @@ export const priorities = [
     value: 2,
     icon: ArrowUpIcon,
   },
-]
+];

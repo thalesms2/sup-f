@@ -1,36 +1,42 @@
-"use client"
+"use client";
 
-import { ArrowUpDown } from "lucide-react"
-import { Button } from '@/components/ui/button'
+import { ArrowUpDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table";
 
-import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 
-import { priorities, statuses } from "./data/data"
-import { DataTableColumnHeader } from "./data-table-column-header"
-import { DataTableRowActions } from "./data-table-row-actions"
-import { ITicket } from "@/types/ticket"
+import { priorities, statuses } from "./data/data";
+import { DataTableColumnHeader } from "./data-table-column-header";
+import { DataTableRowActions } from "./data-table-row-actions";
+import { ITicket } from "@/types/ticket.type";
 
 export const columns: ColumnDef<ITicket>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Ticket" className="ml-5 w-[10px]"/>
+      <DataTableColumnHeader
+        column={column}
+        title="Ticket"
+        className="ml-5 w-[10px]"
+      />
     ),
     cell: ({ row }) => {
       return (
-        <div className="text-center font-medium">
-          {row.getValue("id")}
-        </div>
-      )
-    }
+        <div className="text-center font-medium">{row.getValue("id")}</div>
+      );
+    },
   },
   {
     accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Título" className="w-[200px]" />
+      <DataTableColumnHeader
+        column={column}
+        title="Título"
+        className="w-[200px]"
+      />
     ),
   },
   {
@@ -41,10 +47,10 @@ export const columns: ColumnDef<ITicket>[] = [
     cell: ({ row }) => {
       const status = statuses.find(
         (status) => status.value === row.getValue("status")
-      )
+      );
 
       if (!status) {
-        return null
+        return null;
       }
 
       return (
@@ -54,24 +60,28 @@ export const columns: ColumnDef<ITicket>[] = [
           )}
           <span>{status.label}</span>
         </div>
-      )
+      );
     },
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      return value.includes(row.getValue(id));
     },
   },
   {
     accessorKey: "priority",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Prioridade" className="w-[50px]" />
+      <DataTableColumnHeader
+        column={column}
+        title="Prioridade"
+        className="w-[50px]"
+      />
     ),
     cell: ({ row }) => {
       const priority = priorities.find(
         (priority) => priority.value === row.getValue("priority")
-      )
+      );
 
       if (!priority) {
-        return null
+        return null;
       }
 
       return (
@@ -81,14 +91,14 @@ export const columns: ColumnDef<ITicket>[] = [
           )}
           <span>{priority.label}</span>
         </div>
-      )
+      );
     },
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      return value.includes(row.getValue(id));
     },
   },
   {
     id: "actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
-]
+];

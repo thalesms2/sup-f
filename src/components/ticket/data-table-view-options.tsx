@@ -1,40 +1,39 @@
-"use client"
+"use client";
 
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import { MixerHorizontalIcon } from "@radix-ui/react-icons"
-import { Table } from "@tanstack/react-table"
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { MixerHorizontalIcon } from "@radix-ui/react-icons";
+import { Table } from "@tanstack/react-table";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 interface DataTableViewOptionsProps<TData> {
-  table: Table<TData>
+  table: Table<TData>;
 }
 
 export function DataTableViewOptions<TData>({
   table,
 }: DataTableViewOptionsProps<TData>) {
-  
   function fixColumn(id: string) {
-    switch(id) {
+    switch (id) {
       case "id":
-        return "Ticket"
-        break
+        return "Ticket";
+        break;
       case "title":
-        return "Título"
-        break
+        return "Título";
+        break;
       case "status":
-        return "Status"
-        break
+        return "Status";
+        break;
       case "priority":
-        return "Prioridade"
-        break
+        return "Prioridade";
+        break;
     }
   }
 
@@ -69,9 +68,9 @@ export function DataTableViewOptions<TData>({
               >
                 {fixColumn(column.id)}
               </DropdownMenuCheckboxItem>
-            )
+            );
           })}
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

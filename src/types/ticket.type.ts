@@ -24,5 +24,14 @@ interface IAction {
   isActive: boolean;
 }
 
+interface ITicketDTO {
+  title: string;
+  description: string;
+  companyId: string;
+  public: string;
+  status: string;
+  actions: Array<{ description: string }>;
+  priority: string;
+}
 
-export type { ITicket, IAction };
+export type { ITicket, IAction, ITicketDTO };
